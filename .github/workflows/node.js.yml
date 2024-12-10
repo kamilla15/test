@@ -9,8 +9,11 @@ on:
 
 jobs:
   build:
-
+    name: "Build and Test"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
   
     steps:
@@ -25,3 +28,5 @@ jobs:
     - run: npm test
     - name: Vitest Coverage Report
       uses: avelosert/vitest-coverage-report-action@v2.7.0
+      with: 
+          vite-config-path: vite.config.ts
